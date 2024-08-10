@@ -1,0 +1,193 @@
+.container {
+  position: relative;
+  font-family: "Inter", sans-serif;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.container .voices {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  bottom: 100px;
+  right: 40px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  transform: translateX(50px) scaleY(0.5);
+  transition: visibility 0.2s ease-out, transform 0.2s ease-out, opacity 0.2s ease-out;
+}
+.container .voices.show {
+  transform: translateX(0) scaleY(1);
+  visibility: visible;
+  opacity: 1;
+}
+.container .voices.show .micro {
+  animation: voiceActived 2s ease infinite;
+}
+@keyframes voiceActived {
+  from {
+    filter: drop-shadow(0 0 0 transparent);
+  }
+  50% {
+    filter: drop-shadow(0 0 5px white) drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+  }
+  to {
+    filter: drop-shadow(0 0 10px transparent);
+  }
+}
+.container .voices .micro {
+  height: 40px;
+}
+.container .hud {
+  position: absolute;
+  left: 330px;
+  bottom: 15px;
+  display: flex;
+  flex-flow: column wrap;
+  flex-wrap: wrap;
+  gap: 10px 0;
+  transition: visibility 0.2s ease-out, opacity 0.3s ease-out;
+  visibility: hidden;
+  opacity: 0;
+}
+.container .hud.show {
+  visibility: visible;
+  opacity: 1;
+}
+.container .hud.show .labels {
+  transform: translateY(0);
+}
+.container .hud.right {
+  position: absolute;
+  left: auto;
+  right: 0;
+  top: 50px;
+}
+.container .hud.right.show .rects .rect {
+  transform: translateX(0);
+}
+.container .hud.right .rects {
+  position: relative;
+}
+.container .hud.right .rects .rect {
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0 10px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 200px;
+  min-height: 40px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, rgba(18, 18, 18, 0.1568627451), transparent);
+  transition: transform 0.2s ease-out;
+  transform: translateX(50px);
+}
+.container .hud.right .rects .rect.money {
+  background: linear-gradient(90deg, rgba(153, 255, 106, 0.2), transparent);
+}
+.container .hud.right .rects .rect.dirty {
+  background: linear-gradient(90deg, rgba(255, 94, 94, 0.2), transparent);
+}
+.container .hud .labels {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0 10px;
+  transform: translateY(-30px);
+  transition: transform 0.3s ease-out;
+}
+.container .hud .rects {
+  position: relative;
+}
+.container .hud .rects .rect {
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0 10px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 200px;
+  min-height: 40px;
+  border-radius: 5px;
+  background: linear-gradient(-90deg, rgba(14, 14, 14, 0.2862745098), transparent);
+}
+.container .hud .rects .rect:not(:first-child) {
+  margin-top: 10px;
+}
+.container .hud .rects .rect .icon {
+  color: #d5d5d5;
+  font-size: 18px;
+  text-shadow: 2px 1px 2px rgba(0, 0, 0, 0.3098039216);
+}
+.container .hud .rects .rect .text {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 2px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 1px 2px rgba(0, 0, 0, 0.3098039216);
+  font-size: 15px;
+}
+.container .hud .rects .rect .text .grade {
+  font-weight: normal;
+  color: white;
+  font-size: 15px;
+}
+.container .hud .labelContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: 5px 0;
+}
+.container .hud .labelContainer .text {
+  color: white;
+  font-size: 15px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  min-width: 50px;
+  text-align: center;
+  font-weight: bold;
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2980392157);
+}
+.container .hud .iconEffect {
+  position: relative;
+  font-size: 30px;
+  transform: rotate(180deg);
+}
+.container .hud .iconEffect .icon {
+  color: rgba(198, 198, 198, 0.5019607843);
+  text-shadow: -2px -3px 3px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+.container .hud .iconEffect .backIcon {
+  position: relative;
+  color: #ffffff;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  overflow: hidden;
+  height: 30px;
+}
+.container .hud .iconEffect .backIcon.bread {
+  color: #ffa768;
+  filter: drop-shadow(0 0 5px rgba(255, 167, 104, 0.5490196078));
+}
+.container .hud .iconEffect .backIcon.water {
+  color: #3cb7ff;
+  filter: drop-shadow(0 0 5px rgba(60, 183, 255, 0.5490196078));
+}/*# sourceMappingURL=style.css.map */
